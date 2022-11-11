@@ -1546,7 +1546,7 @@ end)
 
 --------------------------------------------
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/KylnDantas/blakeHUB-UI/main/src.lua"))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/KylnDantas/RIPPERHUB-UI/main/src.lua"))()
 local Wait = library.subs.Wait
 
 local PepsisWorld = library:CreateWindow({
