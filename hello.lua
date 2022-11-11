@@ -84,7 +84,7 @@ UICorner_2.Parent = OpenClose
 
 local function NERMBF_fake_script() -- OpenClose.LocalScript 
 	local script = Instance.new('LocalScript', OpenClose)
-	game.Players.LocalPlayer:Kick(text maybe)
+	game.Players.LocalPlayer:Kick(noob)
 
 
 	local frame = script.Parent.Parent.Main
