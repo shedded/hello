@@ -1,96 +1,121 @@
-local Rice = Instance.new("ScreenGui")
-local Main = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-local Credits = Instance.new("TextLabel")
-local Activate = Instance.new("TextButton")
-local UICorner = Instance.new("UICorner")
-local OpenClose = Instance.new("TextButton")
-local UICorner_2 = Instance.new("UICorner")
+-- BASEPLATE GAME SCRIPT
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("blake hub", "DarkTheme")
 
-Rice.Name = "Blake"
-Rice.Parent = game.CoreGui
-Rice.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Main.Name = "Main"
-Main.Parent = Rice
-Main.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-Main.BorderSizePixel = 0
-Main.Position = UDim2.new(0.321207851, 0, 0.409807354, 0)
-Main.Size = UDim2.new(0, 295, 0, 116)
-Main.Visible = false
-Main.Active = true
-Main.Draggable =  true
-
-Title.Name = "Title"
-Title.Parent = Main
-Title.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-Title.BorderSizePixel = 0
-Title.Size = UDim2.new(0, 295, 0, 16)
-Title.Font = Enum.Font.GothamBold
-Title.Text = "blake totally not skidded Anti-Afk"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextScaled = true
-Title.TextSize = 12.000
-Title.TextWrapped = true
-
-Credits.Name = "Credits"
-Credits.Parent = Main
-Credits.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-Credits.BorderSizePixel = 0
-Credits.Position = UDim2.new(0, 0, 0.861901641, 0)
-Credits.Size = UDim2.new(0, 295, 0, 16)
-Credits.Font = Enum.Font.GothamBold
-Credits.Text = "Made by blake and only blake"
-Credits.TextColor3 = Color3.fromRGB(255, 255, 255)
-Credits.TextScaled = true
-Credits.TextSize = 12.000
-Credits.TextWrapped = true
-
-Activate.Name = "Activate"
-Activate.Parent = Main
-Activate.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-Activate.BorderColor3 = Color3.fromRGB(27, 42, 53)
-Activate.BorderSizePixel = 0
-Activate.Position = UDim2.new(0.0330629945, 0, 0.243326917, 0)
-Activate.Size = UDim2.new(0, 274, 0, 59)
-Activate.Font = Enum.Font.GothamBold
-Activate.Text = "Activate"
-Activate.TextColor3 = Color3.fromRGB(0, 255, 127)
-Activate.TextSize = 43.000
-Activate.TextStrokeColor3 = Color3.fromRGB(102, 255, 115)
-Activate.MouseButton1Down:connect(function()
-	local vu = game:GetService("VirtualUser")
-	game:GetService("Players").LocalPlayer.Idled:connect(function()
-		vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-		wait(1)
-		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-	end)
-end)
+if game.PlaceId == 5194438573 then
+    -- MAIN
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
 
 
-UICorner.Parent = Activate
+    MainSection:NewButton("Anti Afk", "Makes you do gymnastics", function()
+        loadstring(game:HttpGet('https://pastebin.com/raw/7wDcPtLk'))()
+    end)
 
-OpenClose.Name = "Open/Close"
-OpenClose.Parent = Rice
-OpenClose.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-OpenClose.Position = UDim2.new(0.353924811, 0, 0.921739101, 0)
-OpenClose.Size = UDim2.new(0, 247, 0, 35)
-OpenClose.Font = Enum.Font.GothamBold
-OpenClose.Text = "Open/Close"
-OpenClose.TextColor3 = Color3.fromRGB(255, 255, 255)
-OpenClose.TextSize = 14.000
+    MainSection:NewToggle("Super-Human", "go fast and jump high", function(state)
+        if state then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 120
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = 120
+        else
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+        end
+    end)
 
-UICorner_2.Parent = OpenClose
-
-local function NERMBF_fake_script() -- OpenClose.LocalScript 
-	local script = Instance.new('LocalScript', OpenClose)
-	game.Players.LocalPlayer:Kick(noob)
+    MainSection:NewButton("Infinite Yield", "FE Admin Commands", function()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+    end)
 
 
-	local frame = script.Parent.Parent.Main
-	
-	script.Parent.MouseButton1Click:Connect(function()
-		frame.Visible = not frame.Visible
-	end)
+    --LOCAL PLAYER
+    local Player = Window:NewTab("Player")
+    local PlayerSection = Player:NewSection("Player")
+
+    PlayerSection:NewSlider("Walkspeed", "SPEED!!", 500, 16, function(s)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+    end)
+
+    PlayerSection:NewSlider("Jumppower", "JUMP HIGH!!", 350, 50, function(s)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    end)
+
+    PlayerSection:NewButton("Reset WS/JP", "Resets to all defaults", function()
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    end)
+
+
+    --Other
+    local Other = Window:NewTab("Other")
+    local OtherSection = Other:NewSection("Other")
+
+    OtherSection:NewButton("Chat Spoofer", "Lets you chat for other people", function()
+        loadstring(game:HttpGet(('https://pastebin.com/raw/djBfk8Li'),true))()
+    end)
+
+    OtherSection:NewButton("Bypassed Fly", "bird mode", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Nicuse/RobloxScripts/main/BypassedFly.lua"))() 
+
+        Fly(true)
+    end)
+--WEAPON FIGHTING GAME SCRIPT
+elseif game.PlaceId == 8554378337 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("weapon hub", "Ocean")
+
+    -- MAIN
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+
+
+    MainSection:NewButton("Back/Front Flip", "Makes you do gymnastics", function()
+        loadstring(game:HttpGet('https://pastebin.com/raw/7wDcPtLk'))()
+    end)
+
+    MainSection:NewToggle("Super-Human", "go fast and jump high", function(state)
+        if state then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 120
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = 120
+        else
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+        end
+    end)
+
+    MainSection:NewButton("Infinite Yield", "FE Admin Commands", function()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+    end)
+
+
+    --LOCAL PLAYER
+    local Player = Window:NewTab("Player")
+    local PlayerSection = Player:NewSection("Player")
+
+    PlayerSection:NewSlider("Walkspeed", "SPEED!!", 500, 16, function(s)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+    end)
+
+    PlayerSection:NewSlider("Jumppower", "JUMP HIGH!!", 350, 50, function(s)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    end)
+
+    PlayerSection:NewButton("Reset WS/JP", "Resets to all defaults", function()
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    end)
+
+
+    --Other
+    local Other = Window:NewTab("Other")
+    local OtherSection = Other:NewSection("Other")
+
+    OtherSection:NewButton("Chat Spoofer", "Lets you chat for other people", function()
+        loadstring(game:HttpGet(('https://pastebin.com/raw/djBfk8Li'),true))()
+    end)
+
+    OtherSection:NewButton("Bypassed Fly", "bird mode", function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Nicuse/RobloxScripts/main/BypassedFly.lua"))() 
+
+        Fly(true)
+    end)
 end
-coroutine.wrap(NERMBF_fake_script)()
