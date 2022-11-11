@@ -8,8 +8,8 @@ if game.PlaceId == 5194438573 then
     local MainSection = Main:NewSection("Main")
 
 
-    MainSection:NewButton("Anti Afk", "Makes you do gymnastics", function()
-        loadstring(game:HttpGet('https://pastebin.com/raw/7wDcPtLk'))()
+    MainSection:NewButton("Anti Afk", "doesnt kick u if ur afk", function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/shedded/hello/main/a.lua'))()
     end)
 
     MainSection:NewToggle("Super-Human", "go fast and jump high", function(state)
@@ -61,7 +61,7 @@ if game.PlaceId == 5194438573 then
 --WEAPON FIGHTING GAME SCRIPT
 elseif game.PlaceId == 8554378337 then
     local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-    local Window = Library.CreateLib("weapon hub", "Ocean")
+    local Window = Library.CreateLib("weapon hub", "DarkTheme")
 
     -- MAIN
     local Main = Window:NewTab("Main")
